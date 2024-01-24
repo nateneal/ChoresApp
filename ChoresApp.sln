@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoresAppApi", "ChoresAppApi\ChoresAppApi.csproj", "{4907250E-DAF0-4124-84DA-B7CBAD288D1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoresAppApiTest", "ChoresAppApiTest\ChoresAppApiTest.csproj", "{F8CD1F56-B718-4540-98F7-B9D714A2A163}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{4907250E-DAF0-4124-84DA-B7CBAD288D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4907250E-DAF0-4124-84DA-B7CBAD288D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4907250E-DAF0-4124-84DA-B7CBAD288D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8CD1F56-B718-4540-98F7-B9D714A2A163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8CD1F56-B718-4540-98F7-B9D714A2A163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8CD1F56-B718-4540-98F7-B9D714A2A163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8CD1F56-B718-4540-98F7-B9D714A2A163}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
