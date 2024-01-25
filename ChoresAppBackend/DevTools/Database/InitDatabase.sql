@@ -13,3 +13,5 @@ BEGIN
     )
 END
     
+INSERT INTO Chores (Name)
+VALUES ('Init Chore')

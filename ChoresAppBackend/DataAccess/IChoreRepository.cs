@@ -1,6 +1,6 @@
-﻿using ChoresAppApi.Chores;
+﻿using ChoresAppBackend.Chores;
 
-namespace ChoresAppApi.DataAccess;
+namespace ChoresAppBackend.DataAccess;
 
 public interface IChoreRepository : IDisposable
 {
