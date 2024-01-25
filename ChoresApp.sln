@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoresAppBackend", "ChoresAppBackend\ChoresAppBackend.csproj", "{4907250E-DAF0-4124-84DA-B7CBAD288D1A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoresWebApp", "ChoresWebApp\ChoresWebApp.csproj", "{4907250E-DAF0-4124-84DA-B7CBAD288D1A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChoresAppApiTest", "ChoresAppApiTest\ChoresAppApiTest.csproj", "{F8CD1F56-B718-4540-98F7-B9D714A2A163}"
 EndProject

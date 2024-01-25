@@ -1,8 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
 using Dapper;
-using ChoresAppBackend.Chores;
+using ChoresAppWebApp.Chores;
 
-namespace ChoresAppBackend.DataAccess;
+namespace ChoresAppWebApp.DataAccess;
 
 public class ChoreRepository : IChoreRepository
 {

@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ChoresAppBackend\ChoresAppBackend.csproj" />
+      <ProjectReference Include="..\ChoresWebApp\ChoresWebApp.csproj" />
     </ItemGroup>
 
 </Project>

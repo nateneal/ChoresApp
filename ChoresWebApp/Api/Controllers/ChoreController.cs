@@ -1,7 +1,7 @@
-﻿using ChoresAppBackend.DataAccess;
+﻿using ChoresAppWebApp.DataAccess;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ChoresAppBackend.Chores.Controllers;
+namespace ChoresAppWebApp.Chores.Controllers;
 
 public class ChoreController : Controller
 {

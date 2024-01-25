@@ -1,4 +1,4 @@
-﻿namespace ChoresAppBackend.Chores;
+﻿namespace ChoresAppWebApp.Chores;
 
 public record Chore
 {

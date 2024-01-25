@@ -1,4 +1,4 @@
-﻿using ChoresAppBackend.DataAccess;
+﻿using ChoresWebApp.DataAccess;
 
 namespace ChoresAppApiTest.DataAccess;
 
