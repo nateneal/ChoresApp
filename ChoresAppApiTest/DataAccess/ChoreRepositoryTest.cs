@@ -1,4 +1,5 @@
-﻿using ChoresWebApp.DataAccess;
+﻿using ChoresWebApp.Api.DataAccess;
+using Microsoft.Extensions.Configuration;
 
 namespace ChoresAppApiTest.DataAccess;
 
@@ -10,7 +11,18 @@ public class ChoreRepositoryTest
     [Test]
     public void GetChoreByIdTest()
     {
-        var choreRepo = new ChoreRepository();
-        choreRepo.GetChoreById(1);
+        var settings = new Dictionary<string, string>()
+        {
+            {
+                "ConnectionStrings:choresDb",
+                "data source=localhost;initial catalog=master;Integrated Security=SSPI;TrustServerCertificate=true"
+            }
+        };
+
+        IConfigurationRoot config = new ConfigurationManager().AddInMemoryCollection(settings!).Build();
+        
+        var choreRepo = new ChoreRepository(config);
+        var chore = choreRepo.Get(1).Value;
+        Assert.That(chore is { Id: 1, Name: "Init Chore" });
     }
 }

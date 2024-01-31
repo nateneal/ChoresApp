@@ -1,8 +1,13 @@
-﻿namespace ChoresAppWebApp.Chores;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using ChoresWebApp.Api.DataAccess;
 
-public record Chore
+namespace ChoresWebApp.Chores;
+
+public record Chore : StandardCrud
 {
-   public uint Id { get; init; }
-   public required string Name { get; init; }
+   [Required]
+   [RegularExpression(@"(.|\s)*\S(.|\s)*", ErrorMessage = "Name cannot be empty or whitespace")]
+   public string? Name { get; init; }
    public string? Description { get; init; }
 }

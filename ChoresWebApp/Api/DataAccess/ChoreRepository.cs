@@ -1,47 +1,66 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using ChoresWebApp.Chores;
 using Dapper;
-using ChoresAppWebApp.Chores;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
 
-namespace ChoresAppWebApp.DataAccess;
+namespace ChoresWebApp.Api.DataAccess;
 
-public class ChoreRepository : IChoreRepository
+public class ChoreRepository : IRepository<Chore>
 {
-    public Chore GetChoreById(int id)
+    private readonly SqlConnection Connection;
+
+    public ChoreRepository(IConfiguration config)
     {
-        using var connection = new SqlConnection("data source=localhost;initial catalog=master;Integrated Security=SSPI;TrustServerCertificate=true");
-
-        connection.Open();
-
-        var chore = connection.QuerySingle<Chore>("SELECT * FROM Chore.dbo.Chores WHERE Id = @Id", new{ Id = id });
-        
-        return chore;
+        Connection = new SqlConnection(config.GetConnectionString("choresDb"));
+        Connection.Open();
     }
 
-    public Chore InsertChore(Chore chore)
+    public RepositoryResult<Chore> Get(uint id)
     {
-        using var connection = new SqlConnection("data source=localhost;initial catalog=master;Integrated Security=SSPI;TrustServerCertificate=true");
-
-        connection.Open();
-
-        string sql = "INSERT INTO Chore.dbo.Chores (Name) OUTPUT INSERTED.Id, INSERTED.Name VALUES (@name)";
-        
-        var returnChore = connection.QuerySingle<Chore>(sql, new { name = chore.Name });
-        
-        return returnChore;
+        const string sql = "SELECT * FROM Chore.dbo.Chores WHERE Id = @Id";
+        return Connection.GetSingleItemById<Chore>(sql, id);
     }
 
-    public void DeleteChore(int id)
+    public RepositoryResult<Chore> Insert(Chore? chore)
     {
-        throw new NotImplementedException();
+        const string sql = "INSERT INTO Chore.dbo.Chores (Name, Description) OUTPUT INSERTED.Id VALUES (@name, @description)";
+        var id = Connection.QuerySingle<uint>(sql, new { name = chore!.Name, description = chore.Description });
+        
+        return new RepositoryResult<Chore>()
+        {
+            ResultType = RepositoryResultType.Success,
+            Value = chore with{ Id = id }
+        };
     }
 
-    public void UpdateChore(Chore chore)
+    public RepositoryResult Delete(int id)
+    {
+        const string sql = "UPDATE Chore.dbo.Chores SET IsDeleted = 1 WHERE Id = @id";
+        var affected = Connection.Execute(sql, new { id });
+
+        if (affected == 0)
+        {
+            return new RepositoryResult
+            {
+                ResultType = RepositoryResultType.NoResult, 
+                Message = "No chore found with the specified ID"
+            };
+        }
+        
+        return new RepositoryResult
+        {
+            ResultType = RepositoryResultType.Success
+        };
+    }
+
+    public RepositoryResult Update(Chore chore)
     {
         throw new NotImplementedException();
     }
     
     public void Dispose()
     {
-        
+        Connection.Close();
+        Connection.Dispose();
     }
 }
